@@ -1,0 +1,43 @@
+using Biowalk.Data;
+using Biowalk.Data.Repositorios;
+using Biowalk.Dominio.Common;
+using Biowalk.Dominio.Interfaces;
+using Biowalk.Dominio.Interfaces.Mediator;
+using Biowalk.Dominio.Interfaces.Repositorios;
+using Biowalk.Dominio.UseCases.Clientes.CriaCliente;
+using Microsoft.Extensions.DependencyInjection;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IMediator, Mediator>();
+
+builder.Services.AddScoped<DbSession>();
+
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+
+builder.Services.AddScoped<IRequestHandler<CriaClienteCommand, Response<CriaClienteResult>>, CriaClienteHandler>();
+
+builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
