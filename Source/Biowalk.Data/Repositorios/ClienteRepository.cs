@@ -20,13 +20,63 @@ namespace Biowalk.Data.Repositorios
 
         public async Task<int> Incluir(Cliente cliente)
         {
-            var sql = @"
-                INSERT INTO Clientes (RazaoSocial, NomeFantasia, UF, Logradouro, Estado, DataCadastro)
-                VALUES (@RazaoSocial, @NomeFantasia, @UF, @Logradouro, @Estado, @DataCadastro);
-                SELECT CAST(SCOPE_IDENTITY() as int);"; // Retorna o ID gerado (SQL Server)
+            var sql = $@"
+        INSERT INTO {nameof(Cliente)}
+        (
+            {nameof(Cliente.IdCliente)},
+            {nameof(Cliente.RazaoSocial)},
+            {nameof(Cliente.NomeFantasia)},
+            {nameof(Cliente.NomeSocio)},
+            {nameof(Cliente.DataCriacao)},
+            {nameof(Cliente.DataAlteracao)},
+            {nameof(Cliente.Logradouro)},
+            {nameof(Cliente.CEP)},
+            {nameof(Cliente.Bairro)},
+            {nameof(Cliente.Cidade)},
+            {nameof(Cliente.UF)}
+        )
+        VALUES
+        (
+            @{nameof(Cliente.IdCliente)},
+            @{nameof(Cliente.RazaoSocial)},
+            @{nameof(Cliente.NomeFantasia)},
+            @{nameof(Cliente.NomeSocio)},
+            @{nameof(Cliente.DataCriacao)},
+            @{nameof(Cliente.DataAlteracao)},
+            @{nameof(Cliente.Logradouro)},
+            @{nameof(Cliente.CEP)},
+            @{nameof(Cliente.Bairro)},
+            @{nameof(Cliente.Cidade)},
+            @{nameof(Cliente.UF)}
+        );";
 
-            var id = await _session._connection.ExecuteScalarAsync<int>(sql, cliente, _session.Transaction);
-            return id;
+
+            var linhasAfetadas = await _session._connection.ExecuteAsync(sql, cliente, _session.Transaction);
+            return linhasAfetadas;
+
         }
+
+        //public async Task<int> ObterTodos(Cliente cliente)
+        //{
+        //    var sql = $@"
+        //        INSERT INTO {nameof(Cliente)}
+        //        (RazaoSocial, 
+        //        NomeFantasia,
+        //        UF, 
+        //        Logradouro, 
+        //        Estado, 
+        //        DataCadastro)
+        //        VALUES 
+        //        (@RazaoSocial, 
+        //        @NomeFantasia, 
+        //        @UF, 
+        //        @Logradouro, 
+        //        @Estado, 
+        //        @DataCadastro);
+        //        SELECT CAST(SCOPE_IDENTITY() as int);"; // Retorna o ID gerado (SQL Server)
+
+        //    var id = await _session._connection.ExecuteScalarAsync<int>(sql, cliente, _session.Transaction);
+        //    return id;
+        //}
     }
 }

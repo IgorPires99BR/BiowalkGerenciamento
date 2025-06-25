@@ -1,4 +1,5 @@
 ﻿using Biowalk.Dominio.Common;
+using Biowalk.Dominio.Entidades;
 using Biowalk.Dominio.Help.Error;
 using Biowalk.Dominio.Interfaces;
 using Biowalk.Dominio.Interfaces.Mediator;
@@ -31,8 +32,16 @@ namespace Biowalk.Dominio.UseCases.Clientes.CriaCliente
                 return response;
             }
 
+            Cliente cliente = new Cliente(request);
 
+            var clienteBanco = await _unitOfWork.ClienteRepository.Incluir(cliente);
 
+            if (clienteBanco == null)
+            {
+                response.AddErro("Erro ao salvar Cliente no banco de dados");
+                return response;
+            }
+                
             return response;
 
         }

@@ -11,10 +11,14 @@ namespace Biowalk.Dominio.UseCases.Clientes.CriaCliente
     public class CriaClienteCommand : IRequest<Response<CriaClienteResult>>
     {
         public Guid IdCliente { get; set; }
+
         public string RazaoSocial { get; set; }
         public string NomeFantasia { get; set; }
-        public string UF { get; set; }
+        public string NomeSocio { get; set; }
         public string Logradouro { get; set; }
-        public string Estado { get; set; }
+        public string CEP { get; set; } 
+        public string Bairro { get; set; } 
+        public string Cidade { get; set; } 
+        public string UF { get; set; }
     }
 }

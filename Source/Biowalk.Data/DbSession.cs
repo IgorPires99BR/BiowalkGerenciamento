@@ -5,8 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using System.Data.SqlClient;
 
 namespace Biowalk.Data
 {
