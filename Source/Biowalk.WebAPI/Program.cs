@@ -4,7 +4,10 @@ using Biowalk.Dominio.Common;
 using Biowalk.Dominio.Interfaces;
 using Biowalk.Dominio.Interfaces.Mediator;
 using Biowalk.Dominio.Interfaces.Repositorios;
+using Biowalk.Dominio.UseCases.Clientes.AlteraCliente;
 using Biowalk.Dominio.UseCases.Clientes.CriaCliente;
+using Biowalk.Dominio.UseCases.Clientes.DeletaCliente;
+using Biowalk.Dominio.UseCases.Clientes.ObterTodos;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +22,9 @@ builder.Services.AddScoped<DbSession>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
 builder.Services.AddScoped<IRequestHandler<CriaClienteCommand, Response<CriaClienteResult>>, CriaClienteHandler>();
+builder.Services.AddScoped<IRequestHandler<AlteraClienteCommand, Response<AlteraClienteResult>>, AlteraClienteHandler>();
+builder.Services.AddScoped<IRequestHandler<DeletaClienteCommand, Response<DeletaClienteResult>>, DeletaClienteHandler>();
+builder.Services.AddScoped<IRequestHandler<ObterTodosClientesCommand, Response<List<ObterTodosClientesResult>>>, ObterTodosClientesHandler>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
