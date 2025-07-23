@@ -8,6 +8,9 @@ using Biowalk.Dominio.UseCases.Clientes.AlteraCliente;
 using Biowalk.Dominio.UseCases.Clientes.CriaCliente;
 using Biowalk.Dominio.UseCases.Clientes.DeletaCliente;
 using Biowalk.Dominio.UseCases.Clientes.ObterTodos;
+using Biowalk.Dominio.UseCases.Equipamentos.AlteraEquipamento;
+using Biowalk.Dominio.UseCases.Equipamentos.CriaEquipamento;
+using Biowalk.Dominio.UseCases.Equipamentos.DeletaEquipamento;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,11 +23,16 @@ builder.Services.AddScoped<IMediator, Mediator>();
 builder.Services.AddScoped<DbSession>();
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IEquipamentoRepository, EquipamentoRepository>();
 
 builder.Services.AddScoped<IRequestHandler<CriaClienteCommand, Response<CriaClienteResult>>, CriaClienteHandler>();
 builder.Services.AddScoped<IRequestHandler<AlteraClienteCommand, Response<AlteraClienteResult>>, AlteraClienteHandler>();
 builder.Services.AddScoped<IRequestHandler<DeletaClienteCommand, Response<DeletaClienteResult>>, DeletaClienteHandler>();
 builder.Services.AddScoped<IRequestHandler<ObterTodosClientesCommand, Response<List<ObterTodosClientesResult>>>, ObterTodosClientesHandler>();
+
+builder.Services.AddScoped<IRequestHandler<CriaEquipamentoCommand, Response<CriaEquipamentoResult>>, CriaEquipamentoHandler>();
+builder.Services.AddScoped<IRequestHandler<AlteraEquipamentoCommand, Response<AlteraEquipamentoResult>>, AlteraEquipamentoHandler>();
+builder.Services.AddScoped<IRequestHandler<DeletaEquipamentoCommand, Response<DeletaEquipamentoResult>>, DeletaEquipamentoHandler>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

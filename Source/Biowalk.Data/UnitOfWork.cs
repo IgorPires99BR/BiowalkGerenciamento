@@ -14,12 +14,15 @@ namespace Biowalk.Data
         private readonly DbSession _session;
 
          public IClienteRepository ClienteRepository { get; set; }
+         public IEquipamentoRepository EquipamentoRepository { get; set; }
 
         public UnitOfWork(DbSession session,
-            IClienteRepository clienteRepository)
+            IClienteRepository clienteRepository,
+            IEquipamentoRepository equipamentoRepository)
         {
             _session = session;
             ClienteRepository = clienteRepository;
+            EquipamentoRepository = equipamentoRepository;
         }
 
         public void Commit()

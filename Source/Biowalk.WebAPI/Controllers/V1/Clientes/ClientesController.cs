@@ -7,7 +7,7 @@ using Biowalk.WebAPI.Common;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace Biowalk.WebAPI.Controllers.V1
+namespace Biowalk.WebAPI.Controllers.V1.Clientes
 {
     [ApiController]
     [Route("[controller]")]
@@ -24,7 +24,7 @@ namespace Biowalk.WebAPI.Controllers.V1
         public async Task<IActionResult> Post(CriaClienteCommand request)
         {
             var response = await _mediator.Send(request);
-            return this.ValidateResponse((int)HttpStatusCode.Created,response);
+            return this.ValidateResponse((int)HttpStatusCode.Created, response);
         }
 
         [HttpPut]

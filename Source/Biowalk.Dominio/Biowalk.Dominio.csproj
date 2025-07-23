@@ -13,6 +13,9 @@
 
   <ItemGroup>
     <Folder Include="UseCases\Clientes\ObterPorId\" />
+    <Folder Include="UseCases\Equipamentos\ObterPorId\" />
+    <Folder Include="UseCases\Equipamentos\ListarTodos\" />
+    <Folder Include="UseCases\Montagens\" />
   </ItemGroup>
 
 </Project>

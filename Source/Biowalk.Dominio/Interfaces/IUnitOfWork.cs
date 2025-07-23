@@ -10,6 +10,7 @@ namespace Biowalk.Dominio.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IClienteRepository ClienteRepository { get; }
+        IEquipamentoRepository EquipamentoRepository { get; }
         void Commit();
         void BeginTransaction();
         void Rollback();
