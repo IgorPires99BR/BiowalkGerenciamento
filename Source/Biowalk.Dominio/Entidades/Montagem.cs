@@ -8,12 +8,12 @@ namespace Biowalk.Dominio.Entidades
 {
     public class Montagem
     {
-        public Guid IdMontagem  { get; set; }
+        public Guid idMontagem  { get; set; }
 
-        public Guid IdEquipamento { get; set; }
+        public Guid idEquipamento { get; set; }
 
-        public string Descricao { get; set; }
+        public string descricao { get; set; }
 
-        public DateTime DataMontagem { get; set; }
+        public DateTime dataMontagem { get; set; }
     }
 }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Biowalk.Dominio.Entidades
 {
-    public class EquipamentoSetor
+    public class EquipamentoMontagem
     {
-        public Guid IdEquipamentoSetor { get; set; }
+        public Guid IdEquipamentoMontagem { get; set; }
         public Guid IdSetor { get; set; }
         public Guid IdEquipamento { get; set; }
-        public int Ordem { get; set; }
-
+        public DateTime DataLancamento { get; set; }
+        public int status { get; set; }
     }
 }
