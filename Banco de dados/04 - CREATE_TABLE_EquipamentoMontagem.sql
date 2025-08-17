@@ -17,11 +17,14 @@ BEGIN
 
         -- Coluna para a data de lançamento. DATETIME2 é uma boa escolha
         -- para precisão de data e hora.
-        [DataLancamento] DATETIME2 NOT NULL,
-
+        [DataLancamento] DATETIME NOT NULL,
+		[DataFechamentoCorte] DATETIME NULL,
+		[DataFechamentoSolda] DATETIME NULL,
+		[DataFechamentoPintura] DATETIME NULL,
+		[DataFechamentoMontagem] DATETIME NULL,
         -- Coluna para o status do equipamento.
         [status] INT NOT NULL,
-
+		[Etapa] INT NOT NULL
         -- Define a chave primária da tabela.
         CONSTRAINT [PK_EquipamentoMontagem] PRIMARY KEY CLUSTERED ([IdEquipamentoMontagem] ASC)
     );

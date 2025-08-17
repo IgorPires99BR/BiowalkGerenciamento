@@ -8,13 +8,30 @@ using Biowalk.Dominio.UseCases.Clientes.AlteraCliente;
 using Biowalk.Dominio.UseCases.Clientes.CriaCliente;
 using Biowalk.Dominio.UseCases.Clientes.DeletaCliente;
 using Biowalk.Dominio.UseCases.Clientes.ObterTodos;
+using Biowalk.Dominio.UseCases.CriaEquipamentoMontagem;
 using Biowalk.Dominio.UseCases.Equipamentos.AlteraEquipamento;
 using Biowalk.Dominio.UseCases.Equipamentos.CriaEquipamento;
 using Biowalk.Dominio.UseCases.Equipamentos.DeletaEquipamento;
 using Biowalk.Dominio.UseCases.EquipamentosSetor.CriaEquipamentoSetor;
+using Biowalk.Dominio.UseCases.ObterEquipamentoMontagem;
+using Biowalk.Dominio.UseCases.ProcessaEtapa;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowSpecificOrigin",
+                      policy =>
+                      {
+                          // Substitua "http://localhost:4200" pelo endereço do seu front-end
+                          policy.WithOrigins("http://localhost:4200")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                      });
+});
+
 
 // Add services to the container.
 
@@ -26,6 +43,7 @@ builder.Services.AddScoped<DbSession>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IEquipamentoRepository, EquipamentoRepository>();
 builder.Services.AddScoped<IEquipamentoSetorRepository, EquipamentoSetorRepository>();
+builder.Services.AddScoped<IEquipamentoMontagemRepository, EquipamentoMontagemRepository>();
 
 builder.Services.AddScoped<IRequestHandler<CriaClienteCommand, Response<CriaClienteResult>>, CriaClienteHandler>();
 builder.Services.AddScoped<IRequestHandler<AlteraClienteCommand, Response<AlteraClienteResult>>, AlteraClienteHandler>();
@@ -37,6 +55,11 @@ builder.Services.AddScoped<IRequestHandler<AlteraEquipamentoCommand, Response<Al
 builder.Services.AddScoped<IRequestHandler<DeletaEquipamentoCommand, Response<DeletaEquipamentoResult>>, DeletaEquipamentoHandler>();
 
 builder.Services.AddScoped<IRequestHandler<CriaEquipamentoSetorCommand, Response<CriaEquipamentoSetorResult>>, CriaEquipamentoSetorHandler>();
+
+
+builder.Services.AddScoped<IRequestHandler<ObterEquipamentoMontagemQuery, Response<List<ObterEquipamentoMontagemResult>>>, ObterEquipamentoMontagemHandler>();
+builder.Services.AddScoped<IRequestHandler<ProcessaEtapaCommand, Response<ProcessaEtapaResult>>, ProcessaEtapaHandler>();
+builder.Services.AddScoped<IRequestHandler<CriaEquipamentoMontagemCommand, Response<CriaEquipamentoMontagemResult>>, CriaEquipamentoMontagemHandler>();
 
 
 builder.Services.AddControllers();
@@ -52,6 +75,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowSpecificOrigin");
 
 app.UseHttpsRedirection();
 

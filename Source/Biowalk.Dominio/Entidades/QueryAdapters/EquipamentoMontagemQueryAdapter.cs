@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biowalk.Dominio.Entidades
+namespace Biowalk.Dominio.Entidades.QueryAdapters
 {
-    public class EquipamentoMontagem
+    public class EquipamentoMontagemQueryAdapter
     {
         public Guid IdEquipamentoMontagem { get; set; }
         public Guid IdSetor { get; set; }
@@ -16,7 +16,9 @@ namespace Biowalk.Dominio.Entidades
         public DateTime? DataFechamentoSolda { get; set; }
         public DateTime? DataFechamentoPintura { get; set; }
         public DateTime? DataFechamentoMontagem { get; set; }
-        public int status { get; set; }
+        public string NomeEquipamento { get; set; }
+        public string NomeSetor { get; set; }
+        public int Status { get; set; }
         public int Etapa { get; set; }
     }
 }
