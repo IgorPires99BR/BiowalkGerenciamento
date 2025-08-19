@@ -2,7 +2,7 @@
 using Biowalk.Dominio.Entidades;
 using Biowalk.Dominio.Interfaces;
 using Biowalk.Dominio.Interfaces.Mediator;
-using Biowalk.Dominio.UseCases.EquipamentoMontagem.ObterEquipamentoMontagem;
+using Biowalk.Dominio.UseCases.ObterEquipamentoMontagem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,13 +28,12 @@ namespace Biowalk.Dominio.UseCases.CriaEquipamentoMontagem
             {
                 IdEquipamentoMontagem = Guid.NewGuid(),
                 IdEquipamento = Guid.Parse(request.IdEquipamento),
-                IdSetor = Guid.NewGuid(),
                 DataLancamento = DateTime.Now,
                 DataFechamentoCorte = null,
                 DataFechamentoSolda = null,
                 DataFechamentoPintura = null,
                 DataFechamentoMontagem = null,
-                status = 1,
+                Status = 1,
                 Etapa = 1
             };
 

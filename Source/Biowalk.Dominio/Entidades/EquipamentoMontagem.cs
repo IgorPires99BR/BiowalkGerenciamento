@@ -9,14 +9,13 @@ namespace Biowalk.Dominio.Entidades
     public class EquipamentoMontagem
     {
         public Guid IdEquipamentoMontagem { get; set; }
-        public Guid IdSetor { get; set; }
         public Guid IdEquipamento { get; set; }
         public DateTime DataLancamento { get; set; }
         public DateTime? DataFechamentoCorte { get; set; }
         public DateTime? DataFechamentoSolda { get; set; }
         public DateTime? DataFechamentoPintura { get; set; }
         public DateTime? DataFechamentoMontagem { get; set; }
-        public int status { get; set; }
+        public int Status { get; set; }
         public int Etapa { get; set; }
     }
 }

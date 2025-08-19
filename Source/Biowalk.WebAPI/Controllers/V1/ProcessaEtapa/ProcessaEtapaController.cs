@@ -1,5 +1,5 @@
 ﻿using Biowalk.Dominio.Interfaces.Mediator;
-using Biowalk.Dominio.UseCases.EquipamentoMontagem.ObterEquipamentoMontagem;
+using Biowalk.Dominio.UseCases.ObterEquipamentoMontagem;
 using Biowalk.Dominio.UseCases.ProcessaEtapa;
 using Biowalk.WebAPI.Common;
 using Microsoft.AspNetCore.Mvc;

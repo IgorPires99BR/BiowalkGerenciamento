@@ -1,18 +1,18 @@
 USE Biowalk
 
--- Verifica a existência e insere o setor 'Produção' se ele ainda não existir.
-IF NOT EXISTS (SELECT 1 FROM [dbo].[Setor] WHERE NomeSetor = 'Produção')
+-- Verifica se o setor 'Corte' já existe antes de inserir.
+IF NOT EXISTS (SELECT 1 FROM [dbo].[Setor] WHERE NomeSetor = 'Corte')
 BEGIN
     INSERT INTO [dbo].[Setor] ([IdSetor], [NomeSetor])
-    VALUES (NEWID(), 'Produção');
-    PRINT 'Setor Produção inserido com sucesso.';
+    VALUES (NEWID(), 'Corte');
+    PRINT 'Setor Corte inserido com sucesso.';
 END
 ELSE
 BEGIN
-    PRINT 'Setor Produção já existe.';
+    PRINT 'Setor Corte já existe.';
 END
 
--- Verifica a existência e insere o setor 'Solda' se ele ainda não existir.
+-- Verifica se o setor 'Solda' já existe antes de inserir.
 IF NOT EXISTS (SELECT 1 FROM [dbo].[Setor] WHERE NomeSetor = 'Solda')
 BEGIN
     INSERT INTO [dbo].[Setor] ([IdSetor], [NomeSetor])
@@ -24,7 +24,7 @@ BEGIN
     PRINT 'Setor Solda já existe.';
 END
 
--- Verifica a existência e insere o setor 'Pintura' se ele ainda não existir.
+-- Verifica se o setor 'Pintura' já existe antes de inserir.
 IF NOT EXISTS (SELECT 1 FROM [dbo].[Setor] WHERE NomeSetor = 'Pintura')
 BEGIN
     INSERT INTO [dbo].[Setor] ([IdSetor], [NomeSetor])
@@ -36,7 +36,7 @@ BEGIN
     PRINT 'Setor Pintura já existe.';
 END
 
--- Verifica a existência e insere o setor 'Montagem' se ele ainda não existir.
+-- Verifica se o setor 'Montagem' já existe antes de inserir.
 IF NOT EXISTS (SELECT 1 FROM [dbo].[Setor] WHERE NomeSetor = 'Montagem')
 BEGIN
     INSERT INTO [dbo].[Setor] ([IdSetor], [NomeSetor])

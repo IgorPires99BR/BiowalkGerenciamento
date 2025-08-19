@@ -6,15 +6,9 @@ IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Se
 BEGIN
     -- Cria a tabela 'Setor'.
     CREATE TABLE [dbo].[Setor](
-        -- Coluna para a chave primária, mapeada para o Guid do C#.
-        -- O UNIQUEIDENTIFIER é o tipo de dados padrão para GUIDs no SQL Server.
         [IdSetor] UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID(),
+        [NomeSetor] VARCHAR(255) NOT NULL
 
-        -- Coluna para o nome do setor, mapeada para uma string.
-        -- NVARCHAR(255) é um tipo de dados comum para nomes e textos curtos.
-        [NomeSetor] NVARCHAR(255) NOT NULL,
-
-        -- Define a restrição de chave primária na coluna IdSetor.
         CONSTRAINT [PK_Setor] PRIMARY KEY CLUSTERED ([IdSetor] ASC)
     );
 

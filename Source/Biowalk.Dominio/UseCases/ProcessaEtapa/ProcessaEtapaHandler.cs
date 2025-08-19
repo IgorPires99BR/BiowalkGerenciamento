@@ -1,7 +1,7 @@
 ﻿using Biowalk.Dominio.Common;
 using Biowalk.Dominio.Interfaces;
 using Biowalk.Dominio.Interfaces.Mediator;
-using Biowalk.Dominio.UseCases.EquipamentoMontagem.ObterEquipamentoMontagem;
+using Biowalk.Dominio.UseCases.ObterEquipamentoMontagem;
 using System;
 using System.Collections.Generic;
 using System.Linq;

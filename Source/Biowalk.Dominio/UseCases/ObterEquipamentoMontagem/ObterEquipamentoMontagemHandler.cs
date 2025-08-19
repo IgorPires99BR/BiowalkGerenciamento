@@ -33,7 +33,6 @@ namespace Biowalk.Dominio.UseCases.ObterEquipamentoMontagem
                     listaEquipamentos.Add(new ObterEquipamentoMontagemResult
                     {
                         IdEquipamentoMontagem = queryAdapters.IdEquipamentoMontagem,
-                        NomeSetor = queryAdapters.NomeSetor,
                         NomeEquipamento = queryAdapters.NomeEquipamento,
                         DataLancamento = queryAdapters.DataLancamento,
                         DataFechamentoCorte = queryAdapters.DataFechamentoCorte,

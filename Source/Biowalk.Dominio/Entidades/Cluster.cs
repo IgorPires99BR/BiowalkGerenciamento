@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Biowalk.Dominio.Entidades
 {
-    public class Setor
+    public class Cluster
     {
-        public Guid IdSetor { get; set; }
-        public string NomeSetor { get; set; }
+        public Guid IdCluster { get; set; }
+        public string NomeCluster { get; set; }
     }
 }

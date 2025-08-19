@@ -24,8 +24,6 @@ namespace Biowalk.Data.Repositorios
             var sql = $@"
                     SELECT
                         em.{nameof(EquipamentoMontagem.IdEquipamentoMontagem)},
-                        em.{nameof(Setor.IdSetor)} AS {nameof(EquipamentoMontagemQueryAdapter.IdSetor)},
-                        s.{nameof(Setor.NomeSetor)},
                         em.{nameof(Equipamento.IdEquipamento)},
                         e.{nameof(Equipamento.Nome)} AS {nameof(EquipamentoMontagemQueryAdapter.NomeEquipamento)},
                         em.{nameof(EquipamentoMontagem.DataLancamento)},
@@ -34,11 +32,9 @@ namespace Biowalk.Data.Repositorios
                         em.{nameof(EquipamentoMontagem.DataFechamentoMontagem)},
                         em.{nameof(EquipamentoMontagem.DataFechamentoPintura)},
                         em.{nameof(EquipamentoMontagem.Etapa)} AS {nameof(EquipamentoMontagemQueryAdapter.Etapa)},
-                        em.{nameof(EquipamentoMontagem.status)} AS {nameof(EquipamentoMontagemQueryAdapter.Status)}
+                        em.{nameof(EquipamentoMontagem.Status)} AS {nameof(EquipamentoMontagemQueryAdapter.Status)}
                     FROM
                         {nameof(EquipamentoMontagem)} em
-                    INNER JOIN
-                        {nameof(Setor)} s ON em.{nameof(EquipamentoMontagem.IdSetor)} = s.{nameof(Setor.IdSetor)}
                     INNER JOIN
                         {nameof(Equipamento)} e ON em.{nameof(EquipamentoMontagem.IdEquipamento)} = e.{nameof(Equipamento.IdEquipamento)};
     ";
@@ -53,27 +49,25 @@ namespace Biowalk.Data.Repositorios
                         INSERT INTO {nameof(EquipamentoMontagem)}
                         (
                             {nameof(EquipamentoMontagem.IdEquipamentoMontagem)},
-                            {nameof(EquipamentoMontagem.IdSetor)},
                             {nameof(EquipamentoMontagem.IdEquipamento)},
                             {nameof(EquipamentoMontagem.DataLancamento)},
                             {nameof(EquipamentoMontagem.DataFechamentoCorte)},
                             {nameof(EquipamentoMontagem.DataFechamentoSolda)},
                             {nameof(EquipamentoMontagem.DataFechamentoPintura)},
                             {nameof(EquipamentoMontagem.DataFechamentoMontagem)},
-                            {nameof(EquipamentoMontagem.status)},
+                            {nameof(EquipamentoMontagem.Status)},
                             {nameof(EquipamentoMontagem.Etapa)}
                         )
                         VALUES
                         (
                             @{nameof(EquipamentoMontagem.IdEquipamentoMontagem)},
-                            @{nameof(EquipamentoMontagem.IdSetor)},
                             @{nameof(EquipamentoMontagem.IdEquipamento)},
                             @{nameof(EquipamentoMontagem.DataLancamento)},
                             @{nameof(EquipamentoMontagem.DataFechamentoCorte)},
                             @{nameof(EquipamentoMontagem.DataFechamentoSolda)},
                             @{nameof(EquipamentoMontagem.DataFechamentoPintura)},
                             @{nameof(EquipamentoMontagem.DataFechamentoMontagem)},
-                            @{nameof(EquipamentoMontagem.status)},
+                            @{nameof(EquipamentoMontagem.Status)},
                             @{nameof(EquipamentoMontagem.Etapa)}
                         );
                     ";
@@ -81,14 +75,13 @@ namespace Biowalk.Data.Repositorios
             DynamicParameters parametros = new DynamicParameters();
 
             parametros.Add($"@{nameof(EquipamentoMontagem.IdEquipamentoMontagem)}", equipamentoMontagem.IdEquipamentoMontagem);
-            parametros.Add($"@{nameof(EquipamentoMontagem.IdSetor)}", equipamentoMontagem.IdSetor);
             parametros.Add($"@{nameof(EquipamentoMontagem.IdEquipamento)}", equipamentoMontagem.IdEquipamento);
             parametros.Add($"@{nameof(EquipamentoMontagem.DataLancamento)}", equipamentoMontagem.DataLancamento);
             parametros.Add($"@{nameof(EquipamentoMontagem.DataFechamentoCorte)}", equipamentoMontagem.DataFechamentoCorte);
             parametros.Add($"@{nameof(EquipamentoMontagem.DataFechamentoSolda)}", equipamentoMontagem.DataFechamentoSolda);
             parametros.Add($"@{nameof(EquipamentoMontagem.DataFechamentoPintura)}", equipamentoMontagem.DataFechamentoPintura);
             parametros.Add($"@{nameof(EquipamentoMontagem.DataFechamentoMontagem)}", equipamentoMontagem.DataFechamentoMontagem);
-            parametros.Add($"@{nameof(EquipamentoMontagem.status)}", equipamentoMontagem.status);
+            parametros.Add($"@{nameof(EquipamentoMontagem.Status)}", equipamentoMontagem.Status);
             parametros.Add($"@{nameof(EquipamentoMontagem.Etapa)}", equipamentoMontagem.Etapa);
 
 
