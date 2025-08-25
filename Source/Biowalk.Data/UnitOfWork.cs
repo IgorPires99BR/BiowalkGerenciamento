@@ -17,19 +17,22 @@ namespace Biowalk.Data
          public IEquipamentoRepository EquipamentoRepository { get; set; }
          public IEquipamentoSetorRepository EquipamentoSetorRepository { get; set; }
          public IEquipamentoMontagemRepository EquipamentoMontagemRepository { get; set; }
+         public IUsuarioRepository UsuarioRepository{ get; set; }
 
 
         public UnitOfWork(DbSession session,
             IClienteRepository clienteRepository,
             IEquipamentoRepository equipamentoRepository,
             IEquipamentoSetorRepository equipamentoSetorRepository,
-            IEquipamentoMontagemRepository equipamentoMontagemRepository)
+            IEquipamentoMontagemRepository equipamentoMontagemRepository,
+            IUsuarioRepository usuarioRepository)
         {
             _session = session;
             ClienteRepository = clienteRepository;
             EquipamentoRepository = equipamentoRepository;
             EquipamentoSetorRepository = equipamentoSetorRepository;
             EquipamentoMontagemRepository = equipamentoMontagemRepository;
+            UsuarioRepository = usuarioRepository;
         }
 
         public void Commit()

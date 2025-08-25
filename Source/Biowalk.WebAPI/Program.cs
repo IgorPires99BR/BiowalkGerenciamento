@@ -15,6 +15,7 @@ using Biowalk.Dominio.UseCases.Equipamentos.DeletaEquipamento;
 using Biowalk.Dominio.UseCases.EquipamentosSetor.CriaEquipamentoSetor;
 using Biowalk.Dominio.UseCases.ObterEquipamentoMontagem;
 using Biowalk.Dominio.UseCases.ProcessaEtapa;
+using Biowalk.Dominio.UseCases.Usuario.ObterUsuario;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,6 +45,7 @@ builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IEquipamentoRepository, EquipamentoRepository>();
 builder.Services.AddScoped<IEquipamentoSetorRepository, EquipamentoSetorRepository>();
 builder.Services.AddScoped<IEquipamentoMontagemRepository, EquipamentoMontagemRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
 builder.Services.AddScoped<IRequestHandler<CriaClienteCommand, Response<CriaClienteResult>>, CriaClienteHandler>();
 builder.Services.AddScoped<IRequestHandler<AlteraClienteCommand, Response<AlteraClienteResult>>, AlteraClienteHandler>();
@@ -60,6 +62,9 @@ builder.Services.AddScoped<IRequestHandler<CriaEquipamentoSetorCommand, Response
 builder.Services.AddScoped<IRequestHandler<ObterEquipamentoMontagemQuery, Response<List<ObterEquipamentoMontagemResult>>>, ObterEquipamentoMontagemHandler>();
 builder.Services.AddScoped<IRequestHandler<ProcessaEtapaCommand, Response<ProcessaEtapaResult>>, ProcessaEtapaHandler>();
 builder.Services.AddScoped<IRequestHandler<CriaEquipamentoMontagemCommand, Response<CriaEquipamentoMontagemResult>>, CriaEquipamentoMontagemHandler>();
+
+
+builder.Services.AddScoped<IRequestHandler<ObterUsuarioCommand, Response<ObterUsuarioResult>>, ObterUsuarioHandler>();
 
 
 builder.Services.AddControllers();

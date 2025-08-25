@@ -13,6 +13,7 @@ namespace Biowalk.Dominio.Interfaces
         IEquipamentoRepository EquipamentoRepository { get; }
         IEquipamentoSetorRepository EquipamentoSetorRepository { get; }
         IEquipamentoMontagemRepository EquipamentoMontagemRepository { get; }
+        IUsuarioRepository UsuarioRepository { get; }
         void Commit();
         void BeginTransaction();
         void Rollback();
