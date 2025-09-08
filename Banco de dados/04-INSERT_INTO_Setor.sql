@@ -1,5 +1,17 @@
 USE Biowalk
 
+IF NOT EXISTS (SELECT 1 FROM [dbo].[Setor] WHERE NomeSetor = 'Administrativo')
+BEGIN
+    INSERT INTO [dbo].[Setor] ([IdSetor], [NomeSetor])
+    VALUES (NEWID(), 'Administrativo');
+    PRINT 'Setor Administrativo inserido com sucesso.';
+END
+ELSE
+BEGIN
+    PRINT 'Setor Administrativo já existe.';
+END
+
+
 -- Verifica se o setor 'Corte' já existe antes de inserir.
 IF NOT EXISTS (SELECT 1 FROM [dbo].[Setor] WHERE NomeSetor = 'Corte')
 BEGIN

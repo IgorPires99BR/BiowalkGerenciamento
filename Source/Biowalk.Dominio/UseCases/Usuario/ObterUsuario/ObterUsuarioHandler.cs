@@ -30,7 +30,7 @@ namespace Biowalk.Dominio.UseCases.Usuario.ObterUsuario
                 return response;
             }
 
-            response.AddValue(new ObterUsuarioResult("OK"));
+            response.AddValue(new ObterUsuarioResult(resultado.IdSetor.ToString()));
 
             return response;
         }

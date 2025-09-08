@@ -18,6 +18,19 @@ BEGIN
 END
 GO
 
+IF NOT EXISTS (SELECT 1 FROM [dbo].[Usuario] WHERE Nome = 'Lucas')
+BEGIN
+    -- O nome da coluna foi alterado de 'NomeUsuario' para 'Nome' e as colunas 'Login' e 'Senha' foram adicionadas.
+    INSERT INTO [dbo].[Usuario] ([IdSetor], [Nome], [Login], [Senha])
+    VALUES ('325D91BC-322B-4CE6-A3BA-2EFDCB462CB9', 'Lucas', 'Lucas', 'Lucas');
+    PRINT 'Usuário para o setor Corte inserido com sucesso.';
+END
+ELSE
+BEGIN
+    PRINT 'Usuário para o setor Administrativo já existe.';
+END
+GO
+
 -- Insere um usuário para o setor 'Solda'
 IF NOT EXISTS (SELECT 1 FROM [dbo].[Usuario] WHERE Nome = 'Usuario_Solda')
 BEGIN

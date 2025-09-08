@@ -10,9 +10,9 @@ namespace Biowalk.Dominio.UseCases.Usuario.ObterUsuario
     {
         public ObterUsuarioResult(string mensagem)
         {
-            Resposta = mensagem;
+            IdSetor = mensagem;
         }
 
-        public string Resposta { get; set; }
+        public string IdSetor { get; set; }
     }
 }
